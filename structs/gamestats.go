@@ -20,7 +20,6 @@ package structs
  */
 
 type Stats struct {
-	Success   bool `json:"success"`
 	GameStats struct {
 		BUILDBATTLE struct {
 			Modes struct {

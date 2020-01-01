@@ -283,7 +283,7 @@ type PlayerQuests struct {
 
 // PlayerStats holds a collection of structs containing information about a player.
 type PlayerStats struct {
-	HungerGames   HunterGamesStats   `json:"HungerGames"`
+	HungerGames   HungerGamesStats   `json:"HungerGames"`
 	Paintball     PaintballStats     `json:"Paintball"`
 	TNTGames      TNTGamesStats      `json:"TNTGames"`
 	MegaWalls     MegaWallsStats     `json:"Walls3"`
@@ -498,7 +498,6 @@ type MegaWallsStats struct {
 	SkeletonTotalFinalKills               int `json:"skeleton_total_final_kills"`
 	SkeletonWinsStandard                  int `json:"skeleton_wins_standard"`
 	ZombieKills                           int `json:"zombie_kills"`
-	FinalKills                            int `json:"final_kills"`
 	ZombieTotalFinalKills                 int `json:"zombie_total_final_kills"`
 	FinalKillsStandard                    int `json:"final_kills_standard"`
 	TotalFinalKills                       int `json:"total_final_kills"`
@@ -589,8 +588,8 @@ type MegaWallsStats struct {
 	WoodChoppedStandard                   int `json:"wood_chopped_standard"`
 }
 
-// SkyWarsStats is skywars stats about a player.
-type SkyWarsStats struct {
+// SkywarsStats is skywars stats about a player.
+type SkywarsStats struct {
 	Packages                                      []string `json:"packages"`
 	UsedSoulWell                                  bool     `json:"usedSoulWell"`
 	SoulWell                                      int      `json:"soul_well"`
@@ -1010,7 +1009,6 @@ type SkyWarsStats struct {
 	TimePlayedKitDefendingTeamFarmer         int    `json:"time_played_kit_defending_team_farmer"`
 	SoloKnowledge                            int    `json:"solo_knowledge"`
 	SkyWarsOpenedLegendaries                 int    `json:"SkyWars_openedLegendaries"`
-	ActiveCage                               string `json:"active_cage"`
 	CosmeticTokens                           int    `json:"cosmetic_tokens"`
 	ActiveDeathcry                           string `json:"active_deathcry"`
 	ActiveProjectiletrail                    string `json:"active_projectiletrail"`
@@ -1351,13 +1349,11 @@ type BedwarsStats struct {
 	EntityAttackFinalDeathsBedwars            int      `json:"entity_attack_final_deaths_bedwars"`
 	EightTwoGamesPlayedBedwars                int      `json:"eight_two_games_played_bedwars"`
 	ResourcesCollectedBedwars                 int      `json:"resources_collected_bedwars"`
-	EightTwoItemsPurchasedBedwars             int      `json:"eight_two_items_purchased_bedwars"`
 	EightTwoResourcesCollectedBedwars         int      `json:"eight_two_resources_collected_bedwars"`
 	EightTwoBedsLostBedwars                   int      `json:"eight_two_beds_lost_bedwars"`
 	Coins                                     int      `json:"coins"`
 	EightTwoGoldResourcesCollectedBedwars     int      `json:"eight_two_gold_resources_collected_bedwars"`
 	LossesBedwars                             int      `json:"losses_bedwars"`
-	ItemsPurchasedBedwars                     int      `json:"items_purchased_bedwars"`
 	GamesPlayedBedwars                        int      `json:"games_played_bedwars"`
 	IronResourcesCollectedBedwars             int      `json:"iron_resources_collected_bedwars"`
 	EightTwoIronResourcesCollectedBedwars     int      `json:"eight_two_iron_resources_collected_bedwars"`
@@ -1383,7 +1379,6 @@ type BedwarsStats struct {
 	EightOneLossesBedwars                     int      `json:"eight_one_losses_bedwars"`
 	EightOneIronResourcesCollectedBedwars     int      `json:"eight_one_iron_resources_collected_bedwars"`
 	EightOneItemsPurchasedBedwars             int      `json:"eight_one__items_purchased_bedwars"`
-	EightOneItemsPurchasedBedwars             int      `json:"eight_one_items_purchased_bedwars"`
 	EightOneResourcesCollectedBedwars         int      `json:"eight_one_resources_collected_bedwars"`
 	EightOneGoldResourcesCollectedBedwars     int      `json:"eight_one_gold_resources_collected_bedwars"`
 	QuickjoinUsesRandom                       int      `json:"quickjoin_uses_random"`
@@ -1457,7 +1452,6 @@ type BedwarsStats struct {
 	ShopSort                                  string   `json:"shop_sort"`
 	BedwarsOpenedLegendaries                  int      `json:"Bedwars_openedLegendaries"`
 	FourFourWinstreak                         int      `json:"four_four_winstreak"`
-	FourFourItemsPurchasedBedwars             int      `json:"four_four__items_purchased_bedwars"`
 	FourFourBedsLostBedwars                   int      `json:"four_four_beds_lost_bedwars"`
 	FourFourDeathsBedwars                     int      `json:"four_four_deaths_bedwars"`
 	FourFourDiamondResourcesCollectedBedwars  int      `json:"four_four_diamond_resources_collected_bedwars"`
@@ -1494,7 +1488,6 @@ type BedwarsStats struct {
 	EightTwoFireTickFinalDeathsBedwars        int      `json:"eight_two_fire_tick_final_deaths_bedwars"`
 	FireTickFinalDeathsBedwars                int      `json:"fire_tick_final_deaths_bedwars"`
 	FourThreeWinstreak                        int      `json:"four_three_winstreak"`
-	FourThreeItemsPurchasedBedwars            int      `json:"four_three__items_purchased_bedwars"`
 	FourThreeBedsBrokenBedwars                int      `json:"four_three_beds_broken_bedwars"`
 	FourThreeBedsLostBedwars                  int      `json:"four_three_beds_lost_bedwars"`
 	FourThreeDeathsBedwars                    int      `json:"four_three_deaths_bedwars"`
@@ -1701,8 +1694,8 @@ type DuelsStats struct {
 	SwDoublesRoundsPlayed           int      `json:"sw_doubles_rounds_played"`
 }
 
-// SkyBlockStats is Skyblock stats about a player.
-type SkyBlockStats struct {
+// SkyblockStats is Skyblock stats about a player.
+type SkyblockStats struct {
 	Profiles struct {
 	} `json:"profiles"`
 }

@@ -18,16 +18,25 @@ package hypixel
 import (
 	"encoding/json"
 	"fmt"
-	. "hypixel/structs"
 	"net/url"
+
+	. "github.com/t1ra/hypixel/structs"
 
 	"github.com/google/uuid"
 )
 
 var (
 	// Endpoints
-	banStats = APIBaseURL + "watchdogstats"
-	// resources/*
+	banStats     = APIBaseURL + "watchdogstats"
+	playerCount  = APIBaseURL + "playerCount"
+	player       = APIBaseURL + "player"
+	leaderboards = APIBaseURL + "leaderboards"
+	key          = APIBaseURL + "key"
+	gameStats    = APIBaseURL + "gameCounts"
+	findGuild    = APIBaseURL + "findGuild"
+	friends      = APIBaseURL + "friends"
+	boosters     = APIBaseURL + "boosters"
+	// resources/* endpoints
 	resourcesAchievements        = APIBaseURL + "resources/achievements"
 	resourcesChallenges          = APIBaseURL + "resources/challenges"
 	resourcesQuests              = APIBaseURL + "resources/quests"
@@ -35,10 +44,6 @@ var (
 	resourcesGuildsPermissions   = APIBaseURL + "resources/guilds/permissions"
 	resourcesSkyblockCollections = APIBaseURL + "resources/skyblock/collections"
 	resourcesSkyblockSkills      = APIBaseURL + "resources/skyblock/skills"
-	playerCount                  = APIBaseURL + "playerCount"
-	player                       = APIBaseURL + "player"
-	leaderboards                 = APIBaseURL + "leaderboards"
-	key                          = APIBaseURL + "key"
 )
 
 /*
@@ -201,12 +206,12 @@ func (session *Hypixel) Player(uuid string) (Player, error) {
 func (session *Hypixel) Leaderboards() (Leaderboards, error) {
 	var result Leaderboards
 
-	leaderboards, err := session.APIRequest(leaderboards)
+	leaderboardData, err := session.APIRequest(leaderboards)
 	if err != nil {
-		return leaderboards, err
+		return result, err
 	}
 
-	err = json.Unmarshal(leaderboards, &result)
+	err = json.Unmarshal(leaderboardData, &result)
 
 	return result, err
 }
@@ -225,11 +230,35 @@ func (session *Hypixel) Key() (Key, error) {
 	return result, err
 }
 
+// FindGuild returns the ID of a requested guild.
+func (session *Hypixel) FindGuild(guild string) (string, error) {
+	var findGuildContainer struct {
+		Guild string `json:"guild"`
+	}
+
+	var findGuildBytes []byte
+
+	_, err := uuid.Parse(guild)
+	if err == nil { // It's a guild UUID
+		findGuildBytes, err = session.APIRequest(findGuild, "byUuid", guild)
+	} else { // It's a guild name
+		findGuildBytes, err = session.APIRequest(findGuild, "byName", url.QueryEscape(guild))
+	}
+
+	err = json.Unmarshal(findGuildBytes, &findGuildContainer)
+
+	if err != nil {
+		return "", err
+	}
+
+	return findGuildContainer.Guild, err
+}
+
 // Guild returns information about a guild.
 func (session *Hypixel) Guild(guild string) (Guild, error) {
 	var result Guild
 
-	var guildData interface{}
+	var guildData []byte
 	_, err := uuid.Parse(guild)
 	if err == nil { // It's a player UUID
 		guildData, err = session.APIRequest(guild, "player", guild)
@@ -246,12 +275,12 @@ func (session *Hypixel) Guild(guild string) (Guild, error) {
 func (session *Hypixel) Stats() (Stats, error) {
 	var result Stats
 
-	statsData := session.APIRequest(stats)
+	stats, err := session.APIRequest(gameStats)
 	if err != nil {
 		return result, err
 	}
 
-	err = json.Unmarshal(statsData, &result)
+	err = json.Unmarshal(stats, &result)
 
 	return result, err
 }
@@ -260,7 +289,7 @@ func (session *Hypixel) Stats() (Stats, error) {
 func (session *Hypixel) Friends() (Friends, error) {
 	var result Friends
 
-	friendData := session.APIRequest(friends)
+	friendData, err := session.APIRequest(friends)
 	if err != nil {
 		return result, err
 	}
@@ -270,35 +299,11 @@ func (session *Hypixel) Friends() (Friends, error) {
 	return result, err
 }
 
-// FindGuild returns the ID of a requested guild.
-func (session *Hypixel) FindGuild(guild string) (string, error) {
-	var result string
-
-	findGuild := struct {
-		Guild string `json:"guild"`
-	}
-
-	_, err := uuid.Parse(guild)
-	if err == nil { // It's a guild UUID
-		findGuild, err = session.APIRequest(findguild, "byUuid", guild)
-	} else { // It's a guild name
-		findGuild, err = session.APIRequest(findguild, "byName", url.QueryEscape(guild))
-	}
-
-	err = json.Unmarshal(findGuild, &result)
-
-	if err != nil {
-		return "", err
-	}
-
-	return findGuild.Guild, err
-}
-
 // Boosters returns a list of active boosters.
 func (session *Hypixel) Boosters() (Boosters, error) {
 	var result Boosters
 
-	boosterData := session.APIRequest(boosters)
+	boosterData, err := session.APIRequest(boosters)
 	if err != nil {
 		return result, err
 	}
