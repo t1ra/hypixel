@@ -1,7 +1,7 @@
 # hypixel
 
 [![GoDoc](https://godoc.org/github.com/t1ra/hypixel?status.svg)](https://godoc.org/github.com/t1ra/hypixel)
-[![Go report](http://goreportcard.com/badge/t1ra/hypixel)](https://godoc.org/github.com/t1ra/hypixel)
+[![Go Report Card](https://goreportcard.com/badge/github.com/t1ra/hypixel)](https://goreportcard.com/report/github.com/t1ra/hypixel)
 
 **hypixel** is a [Hypixel API](https://github.com/HypixelDev/PublicAPI) library for *Go*.
 It provides near full coverage of Hypixel's public API (see TODO below) in a lightweight package.
