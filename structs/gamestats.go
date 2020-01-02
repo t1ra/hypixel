@@ -19,6 +19,8 @@ package structs
  *                           Stats
  */
 
+// Stats is a struct containing current player information for the whole server, each minigame,
+// and each gamemode of that minigame.
 type Stats struct {
 	GameStats struct {
 		BUILDBATTLE struct {

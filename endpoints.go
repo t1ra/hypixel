@@ -65,7 +65,7 @@ func (session *Hypixel) BanStats() (BanStats, error) {
 
 	err = json.Unmarshal(stats, &result)
 
-	return result, nil
+	return result, err
 }
 
 // Achievements returns all available achievements for all gamemodes.
@@ -78,7 +78,8 @@ func (session *Hypixel) Achievements() (Achievements, error) {
 	}
 
 	err = json.Unmarshal(achievements, &result)
-	return result, nil
+
+	return result, err
 }
 
 // Challenges returns all the available challenges for all gamemodes.
@@ -92,7 +93,7 @@ func (session *Hypixel) Challenges() (Challenges, error) {
 
 	err = json.Unmarshal(challenges, &result)
 
-	return result, nil
+	return result, err
 }
 
 // Quests returns all the available quests for all gamemodes.
@@ -106,7 +107,7 @@ func (session *Hypixel) Quests() (Quests, error) {
 
 	err = json.Unmarshal(quests, &result)
 
-	return result, nil
+	return result, err
 }
 
 // GuildAchievements returns all the available guild achievements.
@@ -120,7 +121,7 @@ func (session *Hypixel) GuildAchievements() (GuildAchievements, error) {
 
 	err = json.Unmarshal(achievements, &result)
 
-	return result, nil
+	return result, err
 }
 
 // GuildPermissions returns all the available guild permissions.
@@ -145,7 +146,7 @@ func (session *Hypixel) GuildPermissions() ([]GuildPermission, error) {
 		guildPermissions = append(guildPermissions, permission.Permission)
 	}
 
-	return guildPermissions, nil
+	return guildPermissions, err
 }
 
 // SkyblockCollections returns all the available skyblock collections.
@@ -153,7 +154,7 @@ func (session *Hypixel) SkyblockCollections() (map[string]SkyblockCollection, er
 	// skyblockCollections is a container for all of the collections in Skyblock.
 	// Instead of returning a needless container, SkyblockCollections() returns
 	// skyblockCollections.Collections directly. The other data here isn't really
-	// neccesary.
+	// necessary.
 	var skyblockCollections struct {
 		LastUpdated int                           `json:"lastUpdated"`
 		Version     string                        `json:"version"`
@@ -167,7 +168,7 @@ func (session *Hypixel) SkyblockCollections() (map[string]SkyblockCollection, er
 
 	err = json.Unmarshal(collections, &skyblockCollections)
 
-	return skyblockCollections.Collections, nil
+	return skyblockCollections.Collections, err
 }
 
 // SkyblockSkills returns all the available skyblock skills.
@@ -175,13 +176,14 @@ func (session *Hypixel) SkyblockSkills() (SkyblockSkills, error) {
 	var result SkyblockSkills
 
 	skills, err := session.apiRequest(resourcesSkyblockSkills)
+
 	if err != nil {
 		return result, err
 	}
 
 	err = json.Unmarshal(skills, &result)
 
-	return result, nil
+	return result, err
 }
 
 // PlayerCount returns the current amount of players online.
@@ -198,7 +200,7 @@ func (session *Hypixel) PlayerCount() (int, error) {
 		return 0, err
 	}
 
-	return result.PlayerCount, nil
+	return result.PlayerCount, err
 }
 
 // Player returns information about a player.
@@ -276,11 +278,11 @@ func (session *Hypixel) FindGuild(guild string) (string, error) {
 		findGuildBytes, err = session.apiRequest(findGuild, "byName", url.QueryEscape(guild))
 	}
 
-	err = json.Unmarshal(findGuildBytes, &findGuildContainer)
-
 	if err != nil {
 		return "", err
 	}
+
+	err = json.Unmarshal(findGuildBytes, &findGuildContainer)
 
 	return findGuildContainer.Guild, err
 }
@@ -298,6 +300,10 @@ func (session *Hypixel) Guild(userGuild string) (Guild, error) {
 		guildData, err = session.apiRequest(guild, "player", userGuild)
 	} else { // It's a guild name
 		guildData, err = session.apiRequest(guild, "name", url.QueryEscape(userGuild))
+	}
+
+	if err != nil {
+		return result.Guild, err
 	}
 
 	err = json.Unmarshal(guildData, &result)

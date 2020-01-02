@@ -1,7 +1,11 @@
 # hypixel
 
-[![GoDoc](https://godoc.org/github.com/t1ra/hypixel?status.svg)](https://godoc.org/github.com/t1ra/hypixel)
-[![Go Report Card](https://goreportcard.com/badge/github.com/t1ra/hypixel)](https://goreportcard.com/report/github.com/t1ra/hypixel)
+[![GoDoc](https://img.shields.io/badge/Godoc-Reference-%2300ADD8?style=flat-square)](https://godoc.org/github.com/t1ra/hypixel)
+[![Go Report Card](https://img.shields.io/badge/Go%20Report-A%2B-%2300ADD8?style=flat-square)](https://goreportcard.com/report/github.com/t1ra/hypixel)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/t1ra/hypixel?color=%2300ADD8&style=flat-square)
+![License MIT](https://img.shields.io/badge/License-MIT-%2300ADD8?style=flat-square)
+
+<img align="right" src="https://raw.githubusercontent.com/ashleymcnamara/gophers/master/Azure_Bit_Gopher.png" alt="Gaming Gopher" width="500px" height="auto">
 
 **hypixel** is a [Hypixel API](https://github.com/HypixelDev/PublicAPI) library for Go.
 It provides near full coverage of Hypixel's public API (see TODO below) in a lightweight package.
@@ -96,4 +100,7 @@ You'll also have to modify the Example `ExampleKey()`'s output from my UUID (`d4
 
 * https://github.com/HypixelDev/PublicAPI/tree/master/Documentation/methods/skyblock
 * There are probably naming inconsistencies, especially in automatically generated structs.
-* Examples
+
+## Thanks
+
+[Ashley McNamara](https://github.com/ashleymcnamara) for the Gopher above. Taken from https://github.com/ashleymcnamara/gophers.

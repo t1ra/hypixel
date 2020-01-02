@@ -43,7 +43,7 @@ type Achievements struct {
 	Modes       map[string]AchievementsMode `json:"achievements"`
 }
 
-// AchievementsMode structs are created for every game mode, it contains sub-structs (seperate
+// AchievementsMode structs are created for every game mode, it contains sub-structs (separate
 // ones for both one time and tiered achievements).
 type AchievementsMode struct {
 	TotalPoints       int `json:"total_points"`
@@ -61,7 +61,7 @@ type OneTimeAchievement struct {
 }
 
 // TieredAchievement is created for achievements that have multiple tiers, which are stored in a
-// seperate Tier struct.
+// separate Tier struct.
 type TieredAchievement struct {
 	Name        string `json:"name"`
 	Description string `json:"description"`

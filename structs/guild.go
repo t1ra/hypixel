@@ -19,6 +19,7 @@ package structs
  *                           Guild
  */
 
+// Guild stores information about a guild.
 type Guild struct {
 	ID        string `json:"_id"`
 	Name      string `json:"name"`
