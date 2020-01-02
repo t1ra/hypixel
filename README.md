@@ -14,6 +14,16 @@ Some changes are made internally to try and keep the API consistent on the
 library's end, but the Hypixel api is very inconsistent so check the documentation
 if something looks like it should work, but doesn't.
 
+## Comparisons to other libraries
+
+| Comparison | t1ra/hypixel  | maxikg/go-hypixel |
+| :---  | :---: | :---: |
+| Available Endpoints | `watchdogstats`, `resources/*`, `playerCount`, `player`, `leaderboards`, `key`, `guild`, `gameCounts`, `friends`, `findGuild`, `boosters`  | `key`, `findGuild`, `guild`, `friends`, `player`, `session` (deprecated)  |
+| Demarshals to | Structs  | Interfaces  |
+| Code Examples | Yes | No |
+| License | ISC | Apache 2 |
+| Maintained | Yes | No |
+
 ## Getting Started
 
 * master
