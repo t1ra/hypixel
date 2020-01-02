@@ -1,4 +1,4 @@
-package hypixel
+package hypixel_test
 
 import (
 	"fmt"
