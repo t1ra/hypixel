@@ -3,7 +3,7 @@
 [![GoDoc](https://img.shields.io/badge/Godoc-Reference-%2300ADD8?style=flat-square)](https://godoc.org/github.com/t1ra/hypixel)
 [![Go Report Card](https://img.shields.io/badge/Go%20Report-A%2B-%2300ADD8?style=flat-square)](https://goreportcard.com/report/github.com/t1ra/hypixel)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/t1ra/hypixel?color=%2300ADD8&style=flat-square)
-![License MIT](https://img.shields.io/badge/License-MIT-%2300ADD8?style=flat-square)
+![License ISC](https://img.shields.io/badge/License-ISC-%2300ADD8?style=flat-square)
 
 <img align="right" src="https://raw.githubusercontent.com/ashleymcnamara/gophers/master/Azure_Bit_Gopher.png" alt="Gaming Gopher" width="500px" height="auto">
 
@@ -56,7 +56,7 @@ be retrieved from in-game by running `/uuid` (or `/uuid new`).
 hypixel, err := Hypixel.New(KEY)
 ```
 
-3. Follow documentation (or examples (TODO)) to construct your application.
+3. Follow documentation and its examples to construct your application.
 
 ## Documentation
 
