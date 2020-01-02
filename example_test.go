@@ -39,7 +39,7 @@ func ExampleNew() {
 	fmt.Println(instance.APIKey)
 }
 
-func ExampleAchievements() {
+func ExampleHypixel_Achievements() {
 	Achievements, err := instance.Achievements()
 	if err != nil {
 		log.Fatalln("Couldn't get achievements:", err)
@@ -49,7 +49,7 @@ func ExampleAchievements() {
 	// Output: 1577816800575
 }
 
-func ExampleBanStats() {
+func ExampleHypixel_BanStats() {
 	BanStats, err := instance.BanStats()
 	if err != nil {
 		log.Fatalln("Couldn't get Ban stats:", err)
@@ -57,14 +57,14 @@ func ExampleBanStats() {
 	fmt.Println(BanStats.WatchdogLastMinute)
 }
 
-func ExampleBoosters() {
+func ExampleHypixel_Boosters() {
 	_, err := instance.Boosters()
 	if err != nil {
 		log.Fatalln("Couldn't get boosters:", err)
 	}
 }
 
-func ExampleFindGuild() {
+func ExampleHypixel_FindGuild() {
 	// Get a guild ID by its name
 	GuildID, err := instance.FindGuild("Sex Havers")
 	if err != nil {
@@ -83,7 +83,7 @@ func ExampleFindGuild() {
 	// 5de1d9c68ea8c96c82070699
 }
 
-func ExampleFriends() {
+func ExampleHypixel_Friends() {
 	Friends, err := instance.Friends("d4acada6-bc84-4dd3-8406-0bb77e207a7a")
 	// Me! :)
 	if err != nil {
@@ -94,7 +94,7 @@ func ExampleFriends() {
 	// Output: 1
 }
 
-func ExampleGuild() {
+func ExampleHypixel_Guild() {
 	Guild, err := instance.Guild("69a7da3c-5e94-4bbe-883e-61568c928d05")
 	if err != nil {
 		log.Fatalln("Couldn't get guild information from player UUID:", err)
@@ -113,7 +113,7 @@ func ExampleGuild() {
 	// 5de1d9c68ea8c96c82070699
 }
 
-func ExampleGuildAchievements() {
+func ExampleHypixel_GuildAchievements() {
 	GuildAchievements, err := instance.GuildAchievements()
 	if err != nil {
 		log.Fatalln("Couldn't get guild achievements", err)
@@ -124,7 +124,7 @@ func ExampleGuildAchievements() {
 	// Output: Reach Guild level %s
 }
 
-func ExampleGuildPermissions() {
+func ExampleHypixel_GuildPermissions() {
 	GuildPermissions, err := instance.GuildPermissions()
 	if err != nil {
 		log.Fatalln("Couldn't get guild permissions", err)
@@ -138,7 +138,7 @@ func ExampleGuildPermissions() {
 	// Output: Modify Guild Name
 }
 
-func ExampleKey() {
+func ExampleHypixel_Key() {
 	Key, err := instance.Key()
 	if err != nil {
 		log.Fatalln("Couldn't get default key information", err)
@@ -149,7 +149,7 @@ func ExampleKey() {
 	// Output: d4acada6bc844dd384060bb77e207a7a
 }
 
-func ExampleLeaderboards() {
+func ExampleHypixel_Leaderboards() {
 	Leaderboards, err := instance.Leaderboards()
 	if err != nil {
 		log.Fatalln("Couldn't get leaderboards", err)
@@ -161,7 +161,7 @@ func ExampleLeaderboards() {
 	// Output: Overall Wins
 }
 
-func ExamplePlayer() {
+func ExampleHypixel_Player() {
 	Player, err := instance.Player("d4acada6-bc84-4dd3-8406-0bb77e207a7a")
 	if err != nil {
 		log.Fatalln("Couldn't get player information", err)
@@ -172,7 +172,7 @@ func ExamplePlayer() {
 	// Output: tiraa
 }
 
-func ExamplePlayerCount() {
+func ExampleHypixel_PlayerCount() {
 	PlayerCount, err := instance.PlayerCount()
 	if err != nil {
 		log.Fatalln("Couldn't get player count", err)
@@ -185,7 +185,7 @@ func ExamplePlayerCount() {
 	// Output: true
 }
 
-func ExampleQuests() {
+func ExampleHypixel_Quests() {
 	Quests, err := instance.Quests()
 	if err != nil {
 		log.Fatalln("Couldn't get quests", err)
@@ -196,7 +196,7 @@ func ExampleQuests() {
 	// Output: Daily Quest: Game of the Day
 }
 
-func ExampleSkyblockCollections() {
+func ExampleHypixel_SkyblockCollections() {
 	SkyblockCollections, err := instance.SkyblockCollections()
 	if err != nil {
 		log.Fatalln(err)
@@ -209,7 +209,7 @@ func ExampleSkyblockCollections() {
 	// 9
 }
 
-func ExampleSkyblockSkills() {
+func ExampleHypixel_SkyblockSkills() {
 	SkyblockSkills, err := instance.SkyblockSkills()
 	if err != nil {
 		log.Fatalln(err)
@@ -222,7 +222,7 @@ func ExampleSkyblockSkills() {
 	// Harvest crops and shear sheep to earn Farming XP!
 }
 
-func ExampleGameStats() {
+func ExampleHypixel_GameStats() {
 	Stats, err := instance.GameStats()
 	if err != nil {
 		log.Fatalln(err)
