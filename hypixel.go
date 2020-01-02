@@ -1,3 +1,4 @@
+// Package hypixel provides Golang bindings to the Hypixel API.
 package hypixel
 
 /*
@@ -31,10 +32,11 @@ const (
 
 var (
 	errAPIKeyLength    = errors.New("bad api key length")
-	errBadAPIArguments = errors.New("bad amount of arguments to APIRequest")
+	errBadAPIArguments = errors.New("bad amount of arguments to apiRequest")
 )
 
-// Hypixel is the main struct of the API. It is expanded upon in other source files.
+// Hypixel is the main struct of the API. It holds the API key for your session, which is
+// set with the New() function.
 type Hypixel struct {
 	sync.RWMutex
 	// Hypixel API keys are in the format of a UUID.
@@ -57,13 +59,41 @@ func New(apiKey string) (*Hypixel, error) {
 
 }
 
-// APIRequest makes request requestType to the Hypixel API.
-func (session *Hypixel) APIRequest(method string, fields ...string) ([]byte, error) {
+// apiRequest makes request requestType to the Hypixel API using the default key.
+func (session *Hypixel) apiRequest(method string, fields ...string) ([]byte, error) {
 	session.Lock()
 
 	defer session.Unlock()
 
 	method += ("?key=" + session.APIKey)
+
+	if len(fields)%2 != 0 {
+		return nil, errBadAPIArguments
+	}
+
+	if len(fields) > 0 {
+		for i, j := 0, 1; j < len(fields); i, j = i+1, j+1 {
+			method += ("&" + fields[i] + "=" + fields[j])
+		}
+	}
+
+	response, err := http.Get(method)
+	if err != nil {
+		return nil, err
+	}
+
+	return ioutil.ReadAll(response.Body)
+}
+
+// apiRequestCustomKey is very much like apiRequest, but uses a custom key instead of the
+// one set in the Hypixel session.
+func (session *Hypixel) apiRequestCustomKey(method string, key string,
+	fields ...string) ([]byte, error) {
+	session.Lock()
+
+	defer session.Unlock()
+
+	method += ("?key=" + key)
 
 	if len(fields)%2 != 0 {
 		return nil, errBadAPIArguments

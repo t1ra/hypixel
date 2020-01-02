@@ -1,3 +1,4 @@
+// Package structs provides structs to store information from the Hypixel API.
 package structs
 
 /*
@@ -36,7 +37,6 @@ type BanStats struct {
  */
 
 // Achievements stores data for the achievements subresource in the resources endpoint.
-// This endpoint's JSON response is complicated so it requires a bunch of structs.
 // https://github.com/HypixelDev/PublicAPI/blob/master/Documentation/methods/resources.md
 type Achievements struct {
 	LastUpdated int64                       `json:"lastUpdated"`
@@ -81,7 +81,6 @@ type Tier struct {
  */
 
 // Challenges stores data for the challenges subresource in the resources endpoint.
-// This endpoint's JSON response is complicated so it requires a bunch of structs.
 // https://github.com/HypixelDev/PublicAPI/blob/master/Documentation/methods/resources.md
 type Challenges struct {
 	LastUpdated int64                          `json:"lastUpdated"`
@@ -112,7 +111,6 @@ type ChallengeReward struct {
  */
 
 // Quests stores data for the quests subresource in the resources endpoint.
-// This endpoint's JSON response is complicated so it requires a bunch of structs.
 // https://github.com/HypixelDev/PublicAPI/blob/master/Documentation/methods/resources.md
 type Quests struct {
 	LastUpdated int64                    `json:"lastUpdated"`
@@ -167,20 +165,8 @@ type GuildAchievementTiers struct {
  *                           Guild Permissions
  */
 
-// GuildPermissions contains all of the permissions a guild member can hold.
-type GuildPermissions struct {
-	LastUpdated int64                   `json:"lastUpdated"`
-	Permissions map[int]GuildPermission `json:"permissions"`
-}
-
-// GuildPermission actually just contains an array of objects. The objects' names are the locale
-// of the permission's text.
+// GuildPermission contains information about a guild permission.
 type GuildPermission struct {
-	Locales map[string]GuildPermissionLocalised
-}
-
-// GuildPermissionLocalised contains guild permission information.
-type GuildPermissionLocalised struct {
 	Name        string            `json:"name"`
 	Description string            `json:"description"`
 	Items       map[string]string `json:"item"`
@@ -189,13 +175,6 @@ type GuildPermissionLocalised struct {
 /*
  *                           Skyblock Collections
  */
-
-// SkyblockCollections contains all of the collections in Skyblock.
-type SkyblockCollections struct {
-	LastUpdated int                           `json:"lastUpdated"`
-	Version     string                        `json:"version"`
-	Collections map[string]SkyblockCollection `json:"collections"`
-}
 
 // SkyblockCollection stores a Skyblock collection's name and the item its tied to.
 type SkyblockCollection struct {
@@ -248,7 +227,7 @@ type SkyblockSkillCollectionLevels struct {
  *                           Player Count
  */
 
-// PlayerCount just contains.. the player count.
+// PlayerCount contains the current player count.
 type PlayerCount struct {
 	PlayerCount int `json:"playerCount"`
 }
@@ -257,18 +236,19 @@ type PlayerCount struct {
  *                           Key
  */
 
+// Key stores information about an API key.
 type Key struct {
-	Record struct {
-		Owner        string `json:"ownerUuid"`
-		Key          string `json:"key"`
-		TotalQueries int    `json:"totalQueries"`
-	}
+	Owner               string `json:"ownerUuid"`
+	Key                 string `json:"key"`
+	TotalQueries        int    `json:"totalQueries"`
+	QueriesInLastMinute int    `json:"queriesInPastMin"`
 }
 
 /*
  *                           Friends
  */
 
+// Friends stores friend information about a user.
 type Friends struct {
 	Records []struct {
 		ID           string `json:"_id"`
@@ -282,6 +262,7 @@ type Friends struct {
  *                           Boosters
  */
 
+// Boosters stores the currently active boosters.
 type Boosters struct {
 	Boosters []struct {
 		ID             string `json:"_id"`

@@ -3,8 +3,12 @@
 [![GoDoc](https://godoc.org/github.com/t1ra/hypixel?status.svg)](https://godoc.org/github.com/t1ra/hypixel)
 [![Go Report Card](https://goreportcard.com/badge/github.com/t1ra/hypixel)](https://goreportcard.com/report/github.com/t1ra/hypixel)
 
-**hypixel** is a [Hypixel API](https://github.com/HypixelDev/PublicAPI) library for *Go*.
+**hypixel** is a [Hypixel API](https://github.com/HypixelDev/PublicAPI) library for Go.
 It provides near full coverage of Hypixel's public API (see TODO below) in a lightweight package.
+
+Some changes are made internally to try and keep the API consistent on the
+library's end, but the Hypixel api is very inconsistent so check the documentation
+if something looks like it should work, but doesn't.
 
 ## Getting Started
 
@@ -55,7 +59,13 @@ hypixel, err := Hypixel.New(KEY)
 As is the style of Go code, all structs and functions in Hypixel are documented in the source. This
 allows Godoc to automatically generate very useful documentation.
 
+For documentation on methods
+
 * [![GoDoc](https://godoc.org/github.com/t1ra/hypixel?status.svg)](https://godoc.org/github.com/t1ra/hypixel)
+
+And for documentation on structs
+
+* [![GoDoc](https://godoc.org/github.com/t1ra/hypixel/structs?status.svg)](https://godoc.org/github.com/t1ra/hypixel/structs)
 
 There isn't any hand-written documentation just yet.
 
@@ -70,7 +80,17 @@ If you want to create a pull request, make sure you follow these guidelines:
 
 * Follow predefined naming conventions and run `go lint`.
 
+* Create and run a test and/or example (if applicable) for your changes.
+
 * Create a pull request stating your changes with a link to the issue.
+
+## Testing
+
+Completing Hypixel tests requires you supply an API. To do so, join Hypixel
+and type `/uuid new`, and add the key to a file called `api_key` in the root of
+the repository.
+
+You'll also have to modify the Example `ExampleKey()`'s output from my UUID (`d4acada6bc844dd384060bb77e207a7a`) to whatever your UUID is.
 
 ## TODO
 
