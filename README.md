@@ -7,7 +7,7 @@
 
 <img align="right" src="https://raw.githubusercontent.com/ashleymcnamara/gophers/master/Azure_Bit_Gopher.png" alt="Gaming Gopher" width="500px" height="auto">
 
-**hypixel** is a [Hypixel API](https://github.com/HypixelDev/PublicAPI) library for Go.
+**hypixel** is a [Hypixel API](https://api.hypixel.net/) library for Go.
 It provides near full coverage of Hypixel's public API (see TODO below) in a lightweight package.
 
 Some changes are made internally to try and keep the API consistent on the
@@ -34,7 +34,7 @@ production tooling.
 * working
 
     * The development branch. There may be rapid, breaking API changes. Bugs are fixed faster, but
-they may be more of them.
+there may be more of them.
 
 ## Installing
 
@@ -44,16 +44,16 @@ To get the latest stable release
 go get github.com/t1ra/hypixel
 ```
 
-But if you want to use working
+To switch to the working branch
 
 ```
 cd $GOPATH/src/github.com/t1ra/hypixel
-git checkout develop
+git checkout working
 ```
 
 ## Usage
 
-1. Import the library into your project
+1. Import the library to your project
 
 ```
 import "github.com/t1ra/hypixel"
@@ -64,6 +64,12 @@ be retrieved from in-game by running `/uuid` (or `/uuid new`).
 
 ```
 hypixel, err := Hypixel.New(KEY)
+```
+
+(You can also use multiple keys if you'd like)
+
+```
+hypixel, err := Hypixel.NEW(KEY, KEY2, KEY3)
 ```
 
 3. Follow documentation and its examples to construct your application.

@@ -36,7 +36,7 @@ func ExampleNew() {
 	if err != nil {
 		log.Fatalln(err)
 	}
-	fmt.Println(instance.APIKey)
+	fmt.Println(instance.getKey())
 }
 
 func ExampleHypixel_Achievements() {
@@ -44,9 +44,8 @@ func ExampleHypixel_Achievements() {
 	if err != nil {
 		log.Fatalln("Couldn't get achievements:", err)
 	}
-	fmt.Println(Achievements.LastUpdated)
 
-	// Output: 1577816800575
+	fmt.Println(Achievements.LastUpdated)
 }
 
 func ExampleHypixel_BanStats() {
@@ -62,6 +61,14 @@ func ExampleHypixel_Boosters() {
 	if err != nil {
 		log.Fatalln("Couldn't get boosters:", err)
 	}
+}
+
+func ExampleHypixel_Challenges() {
+	_, err := instance.Challenges()
+	if err != nil {
+		log.Fatalln("Couldn't get boosters:", err)
+	}
+
 }
 
 func ExampleHypixel_FindGuild() {

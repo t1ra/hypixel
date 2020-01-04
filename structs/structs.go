@@ -93,9 +93,9 @@ type Challenges struct {
 // I like to think this is here for future-proofing, and its easy to just demarshal it like this,
 // so we'll keep it.
 type ChallengesChallenge struct {
-	ID      string                  `json:"id"`
-	Name    string                  `json:"name"`
-	Rewards map[int]ChallengeReward `json:"rewards"`
+	ID      string            `json:"id"`
+	Name    string            `json:"name"`
+	Rewards []ChallengeReward `json:"rewards"`
 }
 
 // ChallengeReward stores a challenge reward. It contains the type, which defines how the gained
@@ -150,9 +150,9 @@ type GuildAchievements struct {
 
 // TieredGuildAchievement contains a guild achievement with more than one level, or tier.
 type TieredGuildAchievement struct {
-	Name        string                        `json:"name"`
-	Description string                        `json:"description"`
-	Tiers       map[int]GuildAchievementTiers `json:"tiers"`
+	Name        string                  `json:"name"`
+	Description string                  `json:"description"`
+	Tiers       []GuildAchievementTiers `json:"tiers"`
 }
 
 // GuildAchievementTiers stores a tier of a TieredGuildAchievement.
@@ -219,7 +219,7 @@ type SkyblockSkillCollection struct {
 // certain levels.
 type SkyblockSkillCollectionLevels struct {
 	Level              int      `json:"level"`
-	ExperienceRequired int      `json:"totalExpRequired"`
+	ExperienceRequired float32  `json:"totalExpRequired"`
 	Unlocks            []string `json:"unlocks"`
 }
 
